@@ -29,7 +29,7 @@ class ApiBloc extends Bloc<ApiBlocEvent, ApiBlocState> {
       if (response.statusCode == 200 && !response.data['error']) {
         final ResponseModel decodedResponseModel = ResponseModel.fromJson(response.data);
 
-        emit(ApiLoadedState(data: [decodedResponseModel]));
+        emit(ApiLoadedState(data: [decodedResponseModel])); // state changes if u check with print, however ui (responses_list.dart) is not updated
       }
     } on DioException catch (e) {
       ApiException exception = ApiException();
